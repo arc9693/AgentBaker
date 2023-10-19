@@ -555,8 +555,8 @@
     {
        "type": "shell",
       "inline": [
-        "dnf makecache -y",
-        "dnf install -y ~/kernel-5.19.0-3.cm2.x86_64.rpm"
+        "sudo dnf makecache -y",
+        "sudo dnf install -y ~/kernel-5.19.0-3.cm2.x86_64.rpm"
       ]
     },
     {
