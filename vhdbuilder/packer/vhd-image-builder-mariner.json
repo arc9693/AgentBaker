@@ -548,7 +548,8 @@
     {
       "type": "shell",
       "inline": [
-        "cd ~ && wget https://kataccstuff.blob.core.windows.net/l1vm/kernel-5.19.0-3.cm2.x86_64.rpm",
+        "cd ~",
+        "wget https://kataccstuff.blob.core.windows.net/l1vm/kernel-5.19.0-3.cm2.x86_64.rpm",
       ]
     },
     {
