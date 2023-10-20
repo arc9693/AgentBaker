@@ -34,3 +34,7 @@ pushd $HOME/kata-bits
 sudo cp $HOME/initrd.img-$LOCALVERSION .
 sudo cp $HOME/AMDSEV/linux/guest/arch/x86_64/boot/bzImage ./vmlinuz-$LOCALVERSION
 popd
+
+which qemu-img
+
+exit 0
