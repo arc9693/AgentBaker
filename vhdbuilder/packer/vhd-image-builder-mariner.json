@@ -41,7 +41,7 @@
       "tenant_id": "{{user `tenant_id`}}",
       "subscription_id": "{{user `subscription_id`}}",
       "os_type": "Linux",
-      "os_disk_size_gb": 30,
+      "os_disk_size_gb": 50,
       "image_publisher": "{{user `img_publisher`}}",
       "image_offer": "{{user `img_offer`}}",
       "image_sku": "{{user `img_sku`}}",
@@ -634,6 +634,12 @@
       "direction": "download",
       "source": "/opt/azure/vhd-install.complete",
       "destination": "release-notes.txt"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "df -h"
+      ]
     },
     {
       "type": "shell",
