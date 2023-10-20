@@ -553,7 +553,7 @@
       ]
     },
     {
-       "type": "shell",
+      "type": "shell",
       "inline": [
         "sudo dnf makecache -y",
         "sudo dnf install -y ~/kernel-5.19.0-3.cm2.x86_64.rpm"
@@ -570,6 +570,23 @@
       "type": "shell",
       "inline": [
         "uname -r"
+      ]
+    },
+    {
+      "type": "file",
+      "source": "vhdbuilder/packer/qemukatadepsinstall.sh",
+      "destination": "/home/packer/qemukatadepsinstall.sh"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sudo /bin/bash -ux /home/packer/qemukatadepsinstall.sh"
+      ]
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "which qemu-img"
       ]
     },
     {
