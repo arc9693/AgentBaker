@@ -13,7 +13,6 @@ sudo ln -sf /usr/bin/python3 /usr/bin/python
 
 GUESTKERNELVERSION=""
 GUESTKERNELDIR=""
-WORK_DIR=$1
 GOPATH=$HOME/go
 
 # Make a directory for the sources
