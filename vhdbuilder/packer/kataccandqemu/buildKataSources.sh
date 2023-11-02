@@ -4,7 +4,7 @@ set -ex
 # Install necessary libraries for building the sources
 echo "Installing necessary libraries"
 if [ -f /etc/yum.repos.d/preview.repo ]; then
-   mv /preview.repo /etc/yum.repos.d/
+   mv /etc/yum.repos.d/preview.repo /
 fi
 sudo dnf install -y git build-essential protobuf-compiler protobuf-devel expect curl openssl-devel clang-devel rust vim libseccomp-devel
 sudo dnf install -y parted golang btrfs-progs-devel device-mapper-devel cmake acpica-tools python3* fuse-devel veritysetup

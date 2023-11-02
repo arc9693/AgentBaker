@@ -1,7 +1,7 @@
 #!/bin/bash
 set -ex
 
-sudo tdnf install -y libcap-ng-devel libattr-devel liburing-devel
+sudo dnf install -y libcap-ng-devel libattr-devel liburing-devel
 git clone https://github.com/AMDESE/AMDSEV.git --branch=sev-snp-devel AMDSEV
 DEST="/usr/local"
 pushd AMDSEV
