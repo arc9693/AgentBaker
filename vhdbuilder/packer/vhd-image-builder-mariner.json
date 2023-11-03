@@ -611,12 +611,6 @@
       ]
     },
     {
-      "type": "shell",
-      "inline": [
-        "sudo /bin/bash -ux /home/packer/modifyContainerdConf.sh"
-      ]
-    },
-    {
       "type": "file",
       "source": "vhdbuilder/packer/list-images.sh",
       "destination": "/home/packer/list-images.sh"
