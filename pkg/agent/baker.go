@@ -1249,33 +1249,15 @@ root = "{{GetDataDir}}"{{- end}}
     type = "snapshot"
     address = "/run/overlaybd-snapshotter/overlaybd.sock"
 {{- end}}
-{{- if IsKata }}
-[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.kata]
-  runtime_type = "io.containerd.kata.v2"
-[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.katacli]
-  runtime_type = "io.containerd.runc.v1"
-[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.katacli.options]
-  NoPivotRoot = false
-  NoNewKeyring = false
-  ShimCgroup = ""
-  IoUid = 0
-  IoGid = 0
-  BinaryName = "/usr/bin/kata-runtime"
-  Root = ""
-  CriuPath = ""
-  SystemdCgroup = false
 [proxy_plugins]
   [proxy_plugins.tardev]
     type = "snapshot"
     address = "/run/containerd/tardev-snapshotter.sock"
 [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.kata-cc]
   snapshotter = "tardev"
-  runtime_type = "io.containerd.kata-cc.v2"
+  runtime_type = "io.containerd.kata.v2"
   privileged_without_host_devices = true
   pod_annotations = ["io.katacontainers.*"]
-  [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.kata-cc.options]
-    ConfigPath = "/opt/confidential-containers/share/defaults/kata-containers/configuration-clh-snp.toml"
-{{- end}}
 `
 
 // this pains me, but to make it respect mutability of vmss tags,
@@ -1361,7 +1343,6 @@ root = "{{GetDataDir}}"{{- end}}
     type = "snapshot"
     address = "/run/overlaybd-snapshotter/overlaybd.sock"
 {{- end}}
-{{- if IsKata }}
 [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.kata]
   runtime_type = "io.containerd.kata.v2"
 [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.katacli]
@@ -1382,12 +1363,9 @@ root = "{{GetDataDir}}"{{- end}}
     address = "/run/containerd/tardev-snapshotter.sock"
 [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.kata-cc]
   snapshotter = "tardev"
-  runtime_type = "io.containerd.kata-cc.v2"
+  runtime_type = "io.containerd.kata.v2"
   privileged_without_host_devices = true
   pod_annotations = ["io.katacontainers.*"]
-  [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.kata-cc.options]
-    ConfigPath = "/opt/confidential-containers/share/defaults/kata-containers/configuration-clh-snp.toml"
-{{- end}}
 `
 
 func containerdConfigFromTemplate(
