@@ -18,7 +18,7 @@ EOF
 cat append_config.txt >> /etc/containerd/config.toml
 cat /etc/containerd/config.toml
 rm append_config.txt
-echo "restarting containerd"
-systemctl restart containerd
+# echo "restarting containerd"
+#systemctl restart containerd
 systemctl status containerd | cat
 echo "Done!"
