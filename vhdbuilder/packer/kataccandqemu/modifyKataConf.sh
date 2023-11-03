@@ -2,7 +2,7 @@
 set -ex
 
 configfilename="/usr/share/defaults/kata-containers/configuration-qemu.toml"
-current_directory=$(pwd)
+current_directory="/root"
 sed -i 's/kernel = "\/usr\/share\/kata-containers\/vmlinux.container"/kernel = "\/usr\/share\/kata-containers\/vmlinuz-snp.container"/' $configfilename
 sed -i "s|path = \"/usr/bin/qemu-system-x86_64\"|path = \"$current_directory/AMDSEV/usr/local/bin/qemu-system-x86_64\"|" $configfilename
 sed -i 's/^image = /# image = /' $configfilename

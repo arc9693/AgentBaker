@@ -584,11 +584,6 @@
     },
     {
       "type": "file",
-      "source": "vhdbuilder/packer/kataccandqemu/modifyContainerdConf.sh",
-      "destination": "/home/packer/modifyContainerdConf.sh"
-    },
-    {
-      "type": "file",
       "source": "vhdbuilder/packer/kataccandqemu/modifyKataConf.sh",
       "destination": "/home/packer/modifyKataConf.sh"
     },
