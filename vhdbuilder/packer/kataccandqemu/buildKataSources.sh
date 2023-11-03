@@ -134,12 +134,15 @@ cp kata-containers/src/tardev-snapshotter/tardev-snapshotter.service /usr/lib/sy
 systemctl enable tardev-snapshotter
 systemctl daemon-reload
 systemctl restart tardev-snapshotter
+systemctl status tardev-snapshotter | cat
 
 echo "Installing containerd"
 if [ -f /usr/bin/containerd ]; then
    mv /usr/bin/containerd /usr/bin/containerd.bak
 fi
 cp confidential-containers-containerd/bin/containerd /usr/bin/containerd
+
+systemctl status containerd | cat
 
 echo "Deleting work directory"
 cd ..
