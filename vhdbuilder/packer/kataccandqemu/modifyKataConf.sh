@@ -9,7 +9,7 @@ sed -i 's/^image = /# image = /' $configfilename
 sed -i 's/^# initrd = /initrd = /' $configfilename
 sed -i 's/^# confidential_guest = true/confidential_guest = true/' $configfilename
 sed -i 's/^# sev_snp_guest = true/sev_snp_guest = true/' $configfilename
-sed -i "s|valid_hypervisor_paths = \[\"/usr/bin/qemu-system-x86_64\"\]|valid_hypervisor_paths = [\"$current_directory/usr/local/bin/qemu-system-x86_64\"]|" $configfilename
+sed -i "s|valid_hypervisor_paths = \[\"/usr/bin/qemu-system-x86_64\"\]|valid_hypervisor_paths = [\"$current_directory/AMDSEV/usr/local/bin/qemu-system-x86_64\"]|" $configfilename
 sed -i "s|firmware = \"\"|firmware = \"$current_directory/AMDSEV/ovmf/Build/OvmfX64/DEBUG_GCC5/FV/OVMF.fd\"|" $configfilename
 sed -i 's/shared_fs = "virtio-fs"/shared_fs = "virtio-9p"/' $configfilename
 sed -i 's/^virtio_fs_daemon =/# virtio_fs_daemon =/' $configfilename
