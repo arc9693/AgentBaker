@@ -137,10 +137,15 @@ systemctl restart tardev-snapshotter
 systemctl status tardev-snapshotter | cat
 
 echo "Installing containerd"
+sha256sum confidential-containers-containerd/bin/containerd
 if [ -f /usr/bin/containerd ]; then
    mv /usr/bin/containerd /usr/bin/containerd.bak
 fi
 cp confidential-containers-containerd/bin/containerd /usr/bin/containerd
+sha256sum /usr/bin/containerd
+
+echo "List containerd config"
+ls /etc/containerd/
 
 systemctl status containerd | cat
 

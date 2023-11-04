@@ -1343,20 +1343,6 @@ root = "{{GetDataDir}}"{{- end}}
     type = "snapshot"
     address = "/run/overlaybd-snapshotter/overlaybd.sock"
 {{- end}}
-[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.kata]
-  runtime_type = "io.containerd.kata.v2"
-[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.katacli]
-  runtime_type = "io.containerd.runc.v1"
-[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.katacli.options]
-  NoPivotRoot = false
-  NoNewKeyring = false
-  ShimCgroup = ""
-  IoUid = 0
-  IoGid = 0
-  BinaryName = "/usr/bin/kata-runtime"
-  Root = ""
-  CriuPath = ""
-  SystemdCgroup = false
 [proxy_plugins]
   [proxy_plugins.tardev]
     type = "snapshot"
