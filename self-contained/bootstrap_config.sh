@@ -322,6 +322,7 @@ EOF
     echo "${CONTAINERD_CONFIG_NO_GPU_CONTENT}" | base64 -d > /etc/containerd/config.toml || exit $ERR_FILE_WATCH_TIMEOUT
   else
     echo "Generating containerd config..."
+    echo "${CONTAINERD_CONFIG_CONTENT}"
     echo "${CONTAINERD_CONFIG_CONTENT}" | base64 -d > /etc/containerd/config.toml || exit $ERR_FILE_WATCH_TIMEOUT
   fi
 
