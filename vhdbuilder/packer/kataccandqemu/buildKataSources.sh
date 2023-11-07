@@ -38,7 +38,6 @@ popd
 # This will install binaries: /usr/bin/kata-runtime and /usr/bin/containerd-shim-kata-v2
 pushd kata-containers/src/runtime/
 make SKIP_GO_VERSION_CHECK=1 DEFSTATICRESOURCEMGMT=true
-sudo -E "PATH=$PATH" "GOPATH=$GOPATH" make install
 popd
 
 # Build tardev-snapshotter
@@ -118,6 +117,11 @@ popd
 
 # Install
 echo "Collecting pieces"
+
+echo "Installing kata-cc"
+cp kata-containers/src/runtime/containerd-shim-kata-v2 /usr/local/bin/containerd-shim-kata-cc-v2
+sha256sum /usr/local/bin/containerd-shim-kata-cc-v2
+
 echo "Installing utarfs"
 cp kata-containers/src/utarfs/target/release/utarfs /usr/sbin/mount.tar
 
