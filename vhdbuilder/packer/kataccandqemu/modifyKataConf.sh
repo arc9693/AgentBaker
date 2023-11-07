@@ -16,3 +16,14 @@ sed -i 's/^virtio_fs_daemon =/# virtio_fs_daemon =/' $configfilename
 sed -i 's/^#disable_image_nvdimm = /disable_image_nvdimm = /' $configfilename
 sed -i 's/^#file_mem_backend = ""/file_mem_backend = ""/' $configfilename
 sed -i 's/^#disable_nesting_checks = true/disable_nesting_checks = true/' $configfilename
+
+refConfigPathInContainerd="/opt/confidential-containers/share/defaults/kata-containers/configuration-clh-snp.toml"
+directoryToCreate=$(dirname "$refConfigPathInContainerd")
+
+echo "Creating directory if it doesn't exist"
+mkdir -p "$directoryToCreate"
+
+echo "Creating symlink"
+ln -sf "$configfilename" "$refConfigPathInContainerd"
+
+ls -la /opt/confidential-containers/share/defaults/kata-containers
