@@ -43,7 +43,7 @@
       "tenant_id": "{{user `tenant_id`}}",
       "subscription_id": "{{user `subscription_id`}}",
       "os_type": "Linux",
-      "os_disk_size_gb": 30,
+      "os_disk_size_gb": 50,
       "image_publisher": "{{user `img_publisher`}}",
       "image_offer": "{{user `img_offer`}}",
       "image_sku": "{{user `img_sku`}}",
@@ -574,6 +574,66 @@
       ]
     },
     {
+      "type": "shell",
+      "inline": [
+        "cd ~",
+        "wget https://kataccstuff.blob.core.windows.net/l1vm/kernel-5.19.0-3.cm2.x86_64.rpm"
+      ]
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sudo dnf makecache -y",
+        "sudo dnf install -y ~/kernel-5.19.0-3.cm2.x86_64.rpm"
+      ]
+    },
+    {
+      "type": "shell",
+      "inline": "sudo reboot",
+      "expect_disconnect": true,
+      "skip_clean": true,
+      "pause_after": "60s"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "uname -r"
+      ]
+    },
+    {
+      "type": "file",
+      "source": "vhdbuilder/packer/kataccandqemu/buildAMSEVSources.sh",
+      "destination": "/home/packer/buildAMSEVSources.sh"
+    },
+    {
+      "type": "file",
+      "source": "vhdbuilder/packer/kataccandqemu/buildKataSources.sh",
+      "destination": "/home/packer/buildKataSources.sh"
+    },
+    {
+      "type": "file",
+      "source": "vhdbuilder/packer/kataccandqemu/modifyKataConf.sh",
+      "destination": "/home/packer/modifyKataConf.sh"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sudo /bin/bash -ux /home/packer/buildKataSources.sh"
+      ]
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sudo /bin/bash -ux /home/packer/buildAMSEVSources.sh"
+      ]
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sudo /bin/bash -ux /home/packer/modifyKataConf.sh"
+      ]
+    },
+    {
       "type": "file",
       "source": "vhdbuilder/packer/list-images.sh",
       "destination": "/home/packer/list-images.sh"
@@ -606,6 +666,12 @@
       "direction": "download",
       "source": "/opt/azure/vhd-install.complete",
       "destination": "release-notes.txt"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "df -h"
+      ]
     },
     {
       "type": "shell",
